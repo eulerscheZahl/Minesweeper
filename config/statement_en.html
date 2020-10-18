@@ -7,10 +7,7 @@
       <span>The Goal</span>
     </h1>
     <div class="statement-goal-content">
-      The aim of this game is to win.
-      <br>
-      <br>
-      For this question, you will be asked to output a single line as a solution.
+      Find all mines without detonating any of them.
     </div>
   </div>
   <!-- RULES -->
@@ -20,23 +17,8 @@
       <span>Rules</span>
     </h1>
     <div>
-      <div class="statement-rules-content">Your program receives characters.<br>
-        Your actions have an effect.<br>
-        <br>
-        The game zone works as follows:
-        <ul>
-          <li>There are coordinates.</li>
-        </ul>
-        <br>
-        The units work as follows:
-        <ul>
-          <li>They move around.</li>
-        </ul>
-        You <strong>lose</strong> if:
-        <ul>
-          <li>You mess up.</li>
-          <li>You do not supply a valid sequence of actions.</li>
-        </ul>
+      <div class="statement-rules-content">You are given a grid of size <const>30</const>x<const>16</const>. There are <const>99</const> mines hidden on the board. <br>
+        You can reveal any cell. If said cell is a mine, you lose the game. Otherwise you will be told the amount of mines neighboring it (including diagonal neighbors).
       </div>
     </div>
   </div>
@@ -47,57 +29,42 @@
       <span>Expert Rules</span>
     </h1>
     <div class="statement-expert-rules-content">
-      If you're going to run local simulations, you'll need to know this!
+      The top left corner has the coordinates (0, 0) <br>
+      You can find the source code of the game on <a href="https://github.com/eulerscheZahl/minesweeper">https://github.com/eulerscheZahl/minesweeper</a>. <br><br>
+      There is one single testcase that's randomly generated after your first action. Your first action will always reveal multiple cells at once. <br>
+      Due to the randomness you may have to submit multiple times to solve the puzzle but a good solver won't require many attempts.
     </div>
   </div>
-  <!-- EXAMPLES -->
-  <div class="statement-section statement-examples">
-    <h1>
-      <span class="icon icon-example">&nbsp;</span>
-      <span>Example</span>
-    </h1>
 
-    <div class="statement-examples-text">
-      A basic situation, an instruction, a result.
-    </div>
-
-  </div>
-  <!-- WARNING -->
+   <!-- WARNING -->
   <div class="statement-section statement-warning">
     <h1>
       <span class="icon icon-warning">&nbsp;</span>
       <span>Note</span>
     </h1>
     <div class="statement-warning-content">
-      <b>Don’t forget to run the tests by launching them from the “Test cases” window</b>. You can submit at any time
-      to recieve a score against the training validators. <b>You can submit as many times as you like</b>. Your most
-      recent submission will be used for the final ranking.<br>
-      <br>
-      <strong>Warning:</strong> the validation tests used to compute the final score are not the same as the ones used
-      during the event.
-      Harcoded solutions will not score highly.<br>
-      <br>
       Don't hesitate to change the viewer's options to help debug your code (<img style="opacity:.8;background:#20252a;"
         height="18" src="https://www.codingame.com/servlet/fileservlet?id=3463235186409" width="18">).
     </div>
   </div>
+  
   <!-- PROTOCOL -->
   <div class="statement-section statement-protocol">
     <h1>
       <span class="icon icon-protocol">&nbsp;</span>
       <span>Game Input</span>
     </h1>
-    <!-- Protocol block -->
-    <div class="blk">
-      <div class="text">The program must first read the initialization data from standard input. Then, provide to the
-        standard output one line with ...</div>
-    </div>
 
     <!-- Protocol block -->
     <div class="blk">
       <div class="title">Input</div>
       <div class="text">
-        <p><span class="statement-lineno">Line 1: </span>one string <var>...</var>, the ...</p>
+        <p><span class="statement-lineno">16 lines with 30 space separated characters each: </span>
+        <ul>
+          <li><const>?</const> for an unknown cell</li>
+          <li><const>.</const> for a revealed cell without any mines next to it</li>
+          <li><const>1</const>-<const>8</const> for a revealed cell with the corresponding amount of mines next to it</li>
+        </ul>
       </div>
     </div>
 
@@ -105,7 +72,9 @@
     <div class="blk">
       <div class="title">Output</div>
       <div class="text">
-        <span class="statement-lineno">A single line</span> containing ...
+        <span class="statement-lineno">A single line</span> <action>x y</action> indicating that you want to reveal that cell. <br>
+        You can add further points to indicate mines. These are purely visual and have no effect on the game. <br>
+        Example: <action>1 2 3 4</action> will reveal the cell (1, 2) and place a flag at (3, 4).
         <br>
       </div>
     </div>
@@ -113,20 +82,11 @@
     <!-- Protocol block -->
     <div class="blk">
       <div class="title">Constraints</div>
-      <div class="text"><var>...</var> contains between 1 and 500 characters.<br>
+      <div class="text"><var>width</var> = <const>30</const><br>
+      <div class="text"><var>height</var> = <const>16</const><br>
+      <div class="text"><var>mineCount</var> = <const>99</const><br>
         <br>Allotted response time to output
-        is ≤ <const>2</const> seconds.</div>
-    </div>
-  </div>
-  <!-- STORY -->
-  <div class="statement-story-background">
-    <div class="statement-story-cover" style="background-size: cover; background-image: url(https://www.codingame.com/servlet/fileservlet?id=2210505809934)">
-      <div class="statement-story">
-        <h1>Title</h1>
-        <div class="story-text">Story
-          <br>
-          Totally optional</div>
-      </div>
+        is &le; <const>50</const>ms per turn (<const>1</const>s for the first turn).</div>
     </div>
   </div>
 </div>

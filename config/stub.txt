@@ -1,0 +1,6 @@
+gameloop
+loop 16 loopline 30 cell:word(1)
+write 20 7
+
+INPUT
+cell: '?' if unknown, '.' if no mines nearby, '1'-'8' otherwise

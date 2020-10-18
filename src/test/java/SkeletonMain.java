@@ -1,28 +1,11 @@
-import com.codingame.gameengine.runner.MultiplayerGameRunner;
+import com.codingame.gameengine.runner.SoloGameRunner;
 
 public class SkeletonMain {
     public static void main(String[] args) {
 
-        // Uncomment this section and comment the other one to create a Solo Game
-        /* Solo Game */
-        // SoloGameRunner gameRunner = new SoloGameRunner();
-
-        // Sets the player
-        // gameRunner.setAgent(Player1.class);
-
-        // Sets a test case
-        // gameRunner.setTestCase("test1.json");
-
-        /* Multiplayer Game */
-        MultiplayerGameRunner gameRunner = new MultiplayerGameRunner();
-
-        // Adds as many player as you need to test your game
-        gameRunner.addAgent(Agent1.class);
-        gameRunner.addAgent(Agent2.class);
-
-        // Another way to add a player
-        // gameRunner.addAgent("python3 /home/user/player.py");
-        
+        SoloGameRunner gameRunner = new SoloGameRunner();
+        gameRunner.setAgent("mono /home/eulerschezahl/Documents/Programming/C#/TestProject/bin/Debug/TestProject.exe");
+        gameRunner.setTestCase("test1.json");
 
         gameRunner.start();
     }
